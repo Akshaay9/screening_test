@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import pdf from "./pdf.pdf";
+import React, { useState } from "react";
 
 function App() {
+  const [pdfState, setPdfState] = useState(false);
+  const submitButtonHandler = () => {
+    setPdfState(true)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="form">
+        <label htmlFor="Name">Enter your Name</label>
+        <input type="text" />
+        <label htmlFor="Name">Enter your Email</label>
+        <input type="text" />
+        <label htmlFor="Name">Enter your Address</label>
+        <input type="text" />
+        <label htmlFor="Name">Enter your GST</label>
+        <input type="text" />
+        <label htmlFor="Name">Enter your PAN Num</label>
+        <input type="text" />
         <a
-          className="App-link"
-          href="https://reactjs.org"
+          href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
           target="_blank"
-          rel="noopener noreferrer"
         >
-          Learn React
+          <button onClick={() => submitButtonHandler()}>Press me</button>
         </a>
-      </header>
+      </div>
+      <div className="pdf">{pdfState ? <embed src={`${pdf}#page=1&zoom=50`} width="400" height="400"/> : ""}</div>
     </div>
   );
 }
